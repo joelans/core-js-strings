@@ -54,7 +54,7 @@ function isString(value) {
  *   concatenateStrings('', 'bb') => 'bb'
  */
 function concatenateStrings(value1, value2) {
-  return value1 + value2;
+  return value1.concat(value2);
 }
 
 /**
@@ -147,7 +147,10 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
+  const index = str.indexOf(value);
+  return index === -1
+    ? str
+    : str.substring(0, index) + str.substring(index + value.length);
 }
 
 /**
@@ -234,18 +237,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  let str = '';
-  if (minutes.toString().length === 1) {
-    str += `0${minutes}:`;
-  } else {
-    str += `${minutes}:`;
-  }
-  if (seconds.toString().length === 1) {
-    str += `0${seconds}`;
-  } else {
-    str += `${seconds}`;
-  }
-  return str;
+  return `${minutes.toString().padStart(2, '0')}:${seconds
+    .toString()
+    .padStart(2, '0')}`;
 }
 
 /**
