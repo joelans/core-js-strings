@@ -289,8 +289,8 @@ function orderAlphabetically(str) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -307,8 +307,22 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    const c = str.charAt(i).toLowerCase();
+    if (
+      c === 'a' ||
+      c === 'e' ||
+      c === 'i' ||
+      c === 'o' ||
+      c === 'u' ||
+      c === 'y'
+    ) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -324,8 +338,32 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let i = 0;
+  let j = str.length - 1;
+  while (i < j) {
+    if (
+      str.charAt(i) === '!' ||
+      str.charAt(i) === ',' ||
+      str.charAt(i) === '?' ||
+      str.charAt(i) === ' '
+    ) {
+      i += 1;
+    } else if (
+      str.charAt(j) === '!' ||
+      str.charAt(j) === ',' ||
+      str.charAt(j) === '?' ||
+      str.charAt(j) === ' '
+    ) {
+      j -= 1;
+    } else if (str.charAt(i).toLowerCase() !== str.charAt(j).toLowerCase()) {
+      return false;
+    } else {
+      i += 1;
+      j -= 1;
+    }
+  }
+  return true;
 }
 
 /**
